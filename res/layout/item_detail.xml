@@ -44,7 +44,12 @@
                 android:layout_height="wrap_content"
                 android:onClick="onBuyButtonClick"
                 android:text="Buy it" />
-            
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onBackButtonClick"
+                android:text="Back" />
         </LinearLayout>
     </LinearLayout>
 
