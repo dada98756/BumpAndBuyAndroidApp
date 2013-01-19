@@ -29,7 +29,7 @@ public class ItemDetailActivity extends Activity {
 
 	}
 	
-	public void onBackButtonClick(){
+	public void onBackButtonClick(View view){
 		finish();
 	}
 }

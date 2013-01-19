@@ -51,7 +51,7 @@ public class PostFormActivity extends Activity {
 		getPhotoFromFilePickerIO();
 	}
 	
-	public void onBackButtonClick(){
+	public void onBackButtonClick(View view){
 		finish();
 	}
 	
