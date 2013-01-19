@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundnoexplosion"
+    
     tools:context=".PostFormActivity" >
 
     <LinearLayout
@@ -12,7 +14,10 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Title" />
+            android:text="Title" 
+            android:textColor="#8C1D04"
+            />
+        
 
         <EditText
             android:id="@+id/title_edittext"
@@ -22,6 +27,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="#8C1D04"
             android:text="Price" />
 
         <EditText
@@ -30,9 +36,10 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:textColor="#8C1D04"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="description" />
+            android:text="Description" />
 
         <EditText
             android:id="@+id/description_edittext"
@@ -47,22 +54,27 @@
             <Button
                 android:id="@+id/sellButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                
+                android:layout_height="44dp"
+                android:background="@drawable/bumpbutton2"
                 android:onClick="onSellButtonClick"
                 android:text="Sell it" />
             
             <Button
                 android:id="@+id/wantButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                
+                android:background="@drawable/bumpbutton2"
+                android:layout_height="44dp"
                 android:onClick="onWantButtonClick"
                 android:text="Want it" />
             <Button
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="44dp"
+                android:background="@drawable/bumpbutton2"
                 android:onClick="onBackButtonClick"
-                android:text="Back" />
+                android:text="Changed My Mind!" />
         </LinearLayout>
     </LinearLayout>
 
