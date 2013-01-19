@@ -1,6 +1,6 @@
 package com.pennapps.bumpandbuy;
 
-
+import com.pennapps.bumpandbuy.R;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,6 +12,11 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    
+    @Override
+    public void onResume(){
+    	super.onResume();
     }
 
     @Override
