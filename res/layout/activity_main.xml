@@ -3,27 +3,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="PennKey"
-    />
-    
-<EditText
-        android:id="@+id/usertext"
+    <TextView
+        android:id="@+id/display"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textVisiblePassword"/>
-
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="SEAS Password"
-    />
-    
-<EditText
-        android:id="@+id/passtext"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword" />
-</LinearLayout>
+        android:layout_height="wrap_content" />
+</LinearLayout>
