@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InboxActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+    <TextView
+        android:id="@+id/feedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"
+        android:text="All Items"
+        android:textColor="#8C1D04"
+        android:textSize="30sp" />
+
+    <ListView
+        android:id="@+id/inboxListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/postButton"
+        android:layout_below="@+id/feedTitle"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:background="#8DA681"
+        android:divider="#F2E1C2"
+        android:dividerHeight="2dp"
+        
+        android:headerDividersEnabled="true" >
+    </ListView>
+    <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onBackButtonClick"
+                android:text="Back" />
+    
+    </LinearLayout>
+    
+
+</RelativeLayout>

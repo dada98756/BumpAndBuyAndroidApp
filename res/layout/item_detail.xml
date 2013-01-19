@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostFormActivity" >
+    tools:context=".ItemDetailActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -10,34 +10,28 @@
         android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/title_textview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Title" />
 
-        <EditText
-            android:id="@+id/title_edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
         <TextView
+            android:id="@+id/seller_textview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Seller" />
+        
+        <TextView
+            android:id="@+id/price_textview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Price" />
 
-        <EditText
-            android:id="@+id/price_edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
         <TextView
+            android:id="@+id/description_textview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="description" />
-
-        <EditText
-            android:id="@+id/description_edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -45,18 +39,12 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/sellButton"
+                android:id="@+id/buyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onSellButtonClick"
-                android:text="Sell it" />
+                android:onClick="onBuyButtonClick"
+                android:text="Buy it" />
             
-            <Button
-                android:id="@+id/wantButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onWantButtonClick"
-                android:text="Want it" />
         </LinearLayout>
     </LinearLayout>
 

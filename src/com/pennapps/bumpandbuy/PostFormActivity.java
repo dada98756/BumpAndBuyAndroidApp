@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 public class PostFormActivity extends Activity {
 
@@ -31,12 +32,18 @@ public class PostFormActivity extends Activity {
 	}
 	
 	
-	public void onPostButtonClick(View view){
+	public void onSellButtonClick(View view){
 		//TODO
+		Toast.makeText(getApplicationContext(),
+				"Post button clicked!",
+				Toast.LENGTH_LONG).show();
 	}
 	
 	public void onWantButtonClick(View view){
 		//TODO
+		Toast.makeText(getApplicationContext(),
+				"Want button clicked!",
+				Toast.LENGTH_LONG).show();
 	}
 	
 

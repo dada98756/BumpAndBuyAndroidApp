@@ -75,8 +75,9 @@
         android:background="#8DA681"
         android:divider="#F2E1C2"
         android:dividerHeight="2dp"
-        android:entries="@+id/feedArray"
+        
         android:headerDividersEnabled="true" >
     </ListView>
+    <!-- android:entries="@+id/feedArray" -->
 
 </RelativeLayout>

@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        doGCMStuff();
     }
     
     @Override
@@ -26,5 +27,9 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    
+    public void doGCMStuff(){
+    	
     }
 }

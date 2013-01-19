@@ -7,5 +7,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_feed">Feed</string>
     <string name="title_activity_post_form">Post</string>
+    <string name="title_activity_item_detail">ItemDetail</string>
+    <string name="title_activity_inbox">Inbox</string>
 
 </resources>
