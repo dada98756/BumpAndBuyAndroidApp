@@ -17,6 +17,17 @@
         android:text="All Items"
         android:textColor="#8C1D04"
         android:textSize="30sp" />
+    
+     <Button
+        android:id="@+id/refreshButton"
+   		  android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="20dp"
+         android:background="@drawable/bumpbutton2"
+        android:textColor="#F2E1C2" 
+        android:layout_alignRight="@+id/listView1"
+        android:layout_alignTop="@+id/feedTitle"
+        android:text="Refresh" />
 
     <ListView
         android:id="@+id/listView1"
@@ -108,5 +119,7 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
     </LinearLayout>
+
+   
 
 </RelativeLayout>

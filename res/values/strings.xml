@@ -11,7 +11,6 @@
     <string name="title_activity_inbox">Inbox</string>
     <string name="title_bump_test">bumptest</string>
     <string name="title_activity_message_detail">MessageDetail</string>
-    
     <string name="error_config">Please set the %1$s constant and recompile the app.</string>
     <string name="already_registered">Device is already registered on server.</string>
     <string name="gcm_registered">From GCM: device successfully registered!</string>
@@ -30,5 +29,6 @@
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
     <string name="applicationId">380615018626574</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
