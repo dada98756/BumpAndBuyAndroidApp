@@ -9,6 +9,7 @@ import android.view.View;
 public class FeedListActivity extends Activity{
 
 	public static final int PostButtonClick_ID = 1;
+	public static final int InboxButtonClick_ID = 2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -21,17 +22,15 @@ public class FeedListActivity extends Activity{
 		super.onResume();
 
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.post_form, menu);
-		return true;
-	}
 
 	public void onPostButtonClick(View view){
 		Intent myIntent = new Intent(this,PostFormActivity.class);
 		startActivityForResult(myIntent, PostButtonClick_ID);
+	}
+	
+	public void onInboxButtonClick(View view){
+		Intent myIntent = new Intent(this,PostFormActivity.class);
+		startActivityForResult(myIntent, InboxButtonClick_ID);
 	}
 
 	@Override
@@ -40,6 +39,8 @@ public class FeedListActivity extends Activity{
 
 		switch(requestCode){
 			case PostButtonClick_ID:
+				break;
+			case InboxButtonClick_ID:
 				break;
 		}
 	}

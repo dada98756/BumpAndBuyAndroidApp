@@ -28,5 +28,8 @@ public class ItemDetailActivity extends Activity {
 				Toast.LENGTH_LONG).show();
 
 	}
-
+	
+	public void onBackButtonClick(){
+		finish();
+	}
 }

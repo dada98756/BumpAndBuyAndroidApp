@@ -39,7 +39,8 @@
         android:layout_toRightOf="@+id/filterButton"
         android:background="#8C1D04"
         android:text="Inbox"
-        android:textColor="#F2E1C2" />
+        android:textColor="#F2E1C2" 
+        android:onClick="onInboxButtonClick"/>/>
 
     <Button
         android:id="@+id/settingsButton"

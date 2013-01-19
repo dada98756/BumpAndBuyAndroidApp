@@ -51,6 +51,10 @@ public class PostFormActivity extends Activity {
 		getPhotoFromFilePickerIO();
 	}
 	
+	public void onBackButtonClick(){
+		finish();
+	}
+	
 	public void getPhotoFromFilePickerIO(){
 		FilePickerAPI.setKey(MY_API_KEY);
 		Intent intent = new Intent(this, FilePicker.class);
