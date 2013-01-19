@@ -1,6 +1,6 @@
-package com.pennapps.buyandbumpandroidapp;
+package com.pennapps.bumpandbuy;
 
-import com.pennapps.buyandbumpandroidapp.R;
+import com.pennapps.bumpandbuy.R;
 
 import android.os.Bundle;
 import android.app.Activity;
