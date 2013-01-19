@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#F2E1C2" >
 
     <Button
         android:id="@+id/postButton"
@@ -10,8 +11,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:text="Post" />
+        android:layout_marginLeft="20dp"
+        android:background="#8C1D04"
+        android:text="Post"
+        android:textColor="#F2E1C2" 
+        android:onClick="onPostButtonClick"/>
 
     <Button
         android:id="@+id/filterButton"
@@ -19,9 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/postButton"
         android:layout_alignBottom="@+id/postButton"
-      	 android:layout_toRightOf="@+id/postButton"
         android:layout_marginLeft="8dp"
-        android:text="Filter" />
+        android:layout_toRightOf="@+id/postButton"
+        android:background="#8C1D04"
+        android:text="Filter"
+        android:textColor="#F2E1C2"
+        android:typeface="normal" />
 
     <Button
         android:id="@+id/inboxButton"
@@ -30,16 +37,20 @@
         android:layout_alignBottom="@+id/filterButton"
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@+id/filterButton"
-        android:text="Inbox" />
+        android:background="#8C1D04"
+        android:text="Inbox"
+        android:textColor="#F2E1C2" />
 
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/postButton"
         android:layout_marginLeft="8dp"
-       android:layout_alignBaseline="@+id/postButton"
         android:layout_toRightOf="@+id/inboxButton"
-        android:text="Me" />
+        android:background="#8C1D04"
+        android:text="Me"
+        android:textColor="#F2E1C2" />
 
     <TextView
         android:id="@+id/feedTitle"
@@ -47,18 +58,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
         android:layout_marginLeft="15dp"
-        android:text="All" />
+        android:layout_marginTop="14dp"
+        android:text="All Items"
+        android:textColor="#8C1D04"
+        android:textSize="30sp" />
 
     <ListView
-        android:id="@+id/feedList"
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/postButton"
         android:layout_below="@+id/feedTitle"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="20dp"
-  
-        android:layout_above="@+id/filterButton" >
+        android:background="#8DA681"
+        android:divider="#F2E1C2"
+        android:dividerHeight="2dp"
+        android:entries="@+id/feedArray"
+        android:headerDividersEnabled="true" >
     </ListView>
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import com.pennapps.bumpandbuy.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
@@ -17,6 +18,8 @@ public class MainActivity extends Activity {
     @Override
     public void onResume(){
     	super.onResume();
+    	Intent myIntent = new Intent(this, FeedListActivity.class);
+        startActivityForResult(myIntent, 0);
     }
 
     @Override
