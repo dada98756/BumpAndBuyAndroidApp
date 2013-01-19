@@ -2,56 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2E1C2" >
+    android:background="@drawable/babbackgroundmain" >
 
-    <Button
-        android:id="@+id/postButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="20dp"
-        android:background="#8C1D04"
-        android:text="Post"
-        android:textColor="#F2E1C2" 
-        android:onClick="onPostButtonClick"/>
-
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/postButton"
-        android:layout_alignBottom="@+id/postButton"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/postButton"
-        android:background="#8C1D04"
-        android:text="Filter"
-        android:textColor="#F2E1C2"
-        android:typeface="normal" />
-
-    <Button
-        android:id="@+id/inboxButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/filterButton"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/filterButton"
-        android:background="#8C1D04"
-        android:text="Inbox"
-        android:textColor="#F2E1C2" 
-        android:onClick="onInboxButtonClick"/>/>
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/postButton"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/inboxButton"
-        android:background="#8C1D04"
-        android:text="Me"
-        android:textColor="#F2E1C2" />
+   
 
     <TextView
         android:id="@+id/feedTitle"
@@ -67,18 +20,93 @@
 
     <ListView
         android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/postButton"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginLeft='10dp'
+        android:headerDividersEnabled="true"
         android:layout_below="@+id/feedTitle"
+        android:layout_above="@+id/buttonRow"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="20dp"
-        android:background="#8DA681"
+        android:layout_marginTop="15dp"
+        android:background="#61A179"
         android:divider="#F2E1C2"
         android:dividerHeight="2dp"
+        android:alpha="0.97"
         
-        android:headerDividersEnabled="true" >
+        >
     </ListView>
+    
+    
+   
     <!-- android:entries="@+id/feedArray" -->
+
+    <LinearLayout
+        android:id='@+id/buttonRow'
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+        
+      <Button
+        android:id="@+id/postButton"
+        android:layout_width="70dp"
+        android:layout_height="44dp"
+         android:layout_marginBottom="15dp"
+        android:background="@drawable/bumpbutton2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+       
+        android:layout_marginLeft="8dp"
+        android:text="Post"
+        android:textColor="#F2E1C2" 
+        android:onClick="onPostButtonClick"/>
+
+    <Button
+        android:id="@+id/filterButton"
+        android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bumpbutton2"
+        android:layout_alignBottom="@+id/postButton"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/postButton"
+        
+        android:text="Filter"
+        android:textColor="#F2E1C2"
+        android:typeface="normal" />
+
+    <Button
+        android:id="@+id/inboxButton"
+               android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bumpbutton2"
+        android:layout_alignBottom="@+id/filterButton"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/filterButton"
+       
+        android:text="Inbox"
+        android:textColor="#F2E1C2" 
+        android:onClick="onInboxButtonClick"/>/>
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bumpbutton2"
+      
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/inboxButton"
+        android:text="Me"
+        android:textColor="#F2E1C2" />
+        
+        
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+    </LinearLayout>
 
 </RelativeLayout>
