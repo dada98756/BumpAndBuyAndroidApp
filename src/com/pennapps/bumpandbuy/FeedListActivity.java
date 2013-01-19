@@ -29,7 +29,7 @@ public class FeedListActivity extends Activity{
 	}
 	
 	public void onInboxButtonClick(View view){
-		Intent myIntent = new Intent(this,PostFormActivity.class);
+		Intent myIntent = new Intent(this,InboxActivity.class);
 		startActivityForResult(myIntent, InboxButtonClick_ID);
 	}
 
