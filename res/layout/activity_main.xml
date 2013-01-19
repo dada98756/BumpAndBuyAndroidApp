@@ -3,12 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
+    <Button
+        android:id="@+id/postButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainActivity" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="Post" />
+
+    <Button
+        android:id="@+id/filterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/postButton"
+        android:layout_alignBottom="@+id/postButton"
+      	 android:layout_toRightOf="@+id/postButton"
+        android:layout_marginLeft="8dp"
+        android:text="Filter" />
+
+    <Button
+        android:id="@+id/inboxButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/filterButton"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/filterButton"
+        android:text="Inbox" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+       android:layout_alignBaseline="@+id/postButton"
+        android:layout_toRightOf="@+id/inboxButton"
+        android:text="Me" />
+
+    <TextView
+        android:id="@+id/feedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
+        android:text="All" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feedTitle"
+        android:layout_marginTop="20dp"
+  
+        android:layout_above="@+id/filterButton" >
+    </ListView>
 
 </RelativeLayout>
