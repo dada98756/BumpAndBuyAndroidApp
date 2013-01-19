@@ -100,11 +100,15 @@
           </intent-filter>
         </service>
         
+        <activity
+            android:name="com.pennapps.bumpandbuy.MessageDetailActivity"
+            android:label="@string/title_activity_message_detail" >
+        </activity>
+        
         <activity android:name="BumpTest"
                   android:label="@string/title_bump_test"
                   android:configChanges="keyboardHidden|orientation">
         </activity>
         
     </application>
-
 </manifest>
