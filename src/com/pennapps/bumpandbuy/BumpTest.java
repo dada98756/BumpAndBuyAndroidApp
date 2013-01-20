@@ -13,6 +13,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bump.api.BumpAPIIntents;
 import com.bump.api.IBumpAPI;
@@ -21,6 +22,7 @@ public class BumpTest extends Activity
 {
     private IBumpAPI api;
     private TextView logTextView;
+    private String bumpUser;
 
     private final ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -30,7 +32,7 @@ public class BumpTest extends Activity
             api = IBumpAPI.Stub.asInterface(binder);
             try {
                 api.configure("a4b0169618ac415d95b7b8b59afc11af",
-                              "Bump User");
+                              bumpUser);
             } catch (RemoteException e) {
                 Log.w("BumpTest", e);
             }
@@ -121,6 +123,7 @@ public class BumpTest extends Activity
      public void onResume() {
         Log.i("BumpTest", "onResume");
         logTextView.append("onResume\n");
+        bumpUser = "bump"+System.currentTimeMillis();
         super.onResume();
      }
 
@@ -141,6 +144,9 @@ public class BumpTest extends Activity
         logTextView.append("onDestroy\n");
         unbindService(connection);
         unregisterReceiver(receiver);
+        Toast.makeText(getApplicationContext(),
+				"BumpTest Destroying!",
+				Toast.LENGTH_LONG).show();
         super.onDestroy();
      }
 }
