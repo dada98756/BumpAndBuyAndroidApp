@@ -114,6 +114,10 @@
             android:name="com.pennapps.bumpandbuy.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.pennapps.bumpandbuy.BumpActivity"
+            android:label="@string/title_activity_bump" >
+        </activity>
     </application>
 
 </manifest>
