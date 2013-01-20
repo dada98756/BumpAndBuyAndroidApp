@@ -32,7 +32,7 @@ public class Server {
 		POST, GET
 	};
 
-	final public static String SERVER_URL = "http://158.130.110.227:8080";
+	final public static String SERVER_URL = "http://158.130.105.114:8080";
 
 
 	public JSONArray post2(String endpoint, Map<String, String> params)

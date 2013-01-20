@@ -43,7 +43,9 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void onEnterButtonClick(View view){
-		
+		Toast.makeText(getApplicationContext(),
+				"GO!",
+				Toast.LENGTH_LONG).show();
 		try {
 			String email=user.getText().toString().trim();
 			String password=pwd.getText().toString();

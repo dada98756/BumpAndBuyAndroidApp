@@ -51,10 +51,11 @@ public class ItemDetailActivity extends Activity {
 		description.setText(details.get(ItemField.TEXT));
 		
 		price = (TextView)findViewById(R.id.price_textview);
-		price.setText(details.get(ItemField.PRICE));
+		price.setText("$"+details.get(ItemField.PRICE));
 		
 		seller = (TextView)findViewById(R.id.seller_textview);
-		seller.setText(details.get(ItemField.AUTHOR_EMAIL));
+		String strSeller = details.get(ItemField.AUTHOR_EMAIL);
+		seller.setText(strSeller.split("@",2)[0]);
 	
 	}
 

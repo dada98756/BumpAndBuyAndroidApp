@@ -158,7 +158,18 @@ public class FeedListActivity extends Activity{
 		/*
 		 * attach the updater to the list view
 		 */
-		SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
+		ArrayList<HashMap<String,String>> newFakeMapList = new ArrayList<HashMap<String,String>>();
+		for (HashMap<String,String> amap: fakeMap){
+			HashMap<String,String> nmap = new HashMap<String,String>();
+			for (String key : amap.keySet()){
+				if (key.equals(ItemField.PRICE))
+					nmap.put(key, "$"+amap.get(key));
+				else
+					nmap.put(key, amap.get(key));
+			}
+			newFakeMapList.add(nmap);
+		}
+		SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, newFakeMapList,
 				R.layout.itemlist, new String[] { ItemField.POST_TITLE, ItemField.TEXT, ItemField.PRICE },
 				new int[] { R.id.item_name, R.id.item_description, R.id.item_price });
 		itemListView.setAdapter(adapter);

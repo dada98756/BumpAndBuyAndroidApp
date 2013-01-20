@@ -73,7 +73,8 @@ public class BumpActivity extends Activity {
 					logTextView.append("Data: " + new String(intent.getByteArrayExtra("data"))+"\n");
 					String yourItemId = new String(intent.getByteArrayExtra("data"));
 					//TODO here we should see if itemid consistent
-					boolean isConsistent = yourItemId.equals(msg.get(MessageField.ITEM_ID))?true:false;
+					boolean isConsistent = yourItemId.trim().equals(msg.get(MessageField.ITEM_ID).trim())?true:false;
+					//isConsistent = true;
 					if (isConsistent){	//itemids consistent
 						//TODO venom logic, let buyer initialize payment
 						String userEmail = SettingsActivity.userAccount.get(UserField.PENN_EMAIL);
