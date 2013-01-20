@@ -32,4 +32,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_bump">Bump</string>
 
+    <string name="pref_name">myPref</string>
+    <string name="pref_mode">0</string>
+
 </resources>
