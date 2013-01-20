@@ -94,8 +94,6 @@
             android:onClick="onInboxButtonClick"
             android:text="Inbox"
             android:textColor="#F2E1C2" />
-/>
-
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="70dp"
