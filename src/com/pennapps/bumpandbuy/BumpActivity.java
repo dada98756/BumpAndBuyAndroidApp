@@ -1,12 +1,7 @@
 package com.pennapps.bumpandbuy;
 
-import com.bump.api.BumpAPIIntents;
-import com.bump.api.IBumpAPI;
-import com.pennapps.bumpandbuy.VenmoLibrary.VenmoResponse;
+import java.util.HashMap;
 
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -14,13 +9,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BumpActivity extends Activity {
+import com.bump.api.BumpAPIIntents;
+import com.bump.api.IBumpAPI;
+import com.pennapps.bumpandbuy.VenmoLibrary.VenmoResponse;
 
+public class BumpActivity extends Activity {
+	
+	public static HashMap<String,String> msg;
 	private IBumpAPI api;
 	private TextView logTextView;
 	private String bumpUser;
@@ -33,6 +36,8 @@ public class BumpActivity extends Activity {
 	private String note;
 	public  static final int VenmoActivityResult = 2;
 	private final String venmo_app_secret = "K7qUAMtRe59jCrTgrmTfLrfXxt43nj7q";
+	private final String noteOfBump = "Transaction made possible through Bump!";
+	private final String pay = "pay";
 
 
 	private final ServiceConnection connection = new ServiceConnection() {
@@ -66,8 +71,9 @@ public class BumpActivity extends Activity {
 				if (action.equals(BumpAPIIntents.DATA_RECEIVED)) {
 					logTextView.append("Received data from: " + api.userIDForChannelID(intent.getLongExtra("channelID", 0))+"\n");
 					logTextView.append("Data: " + new String(intent.getByteArrayExtra("data"))+"\n");
+					String yourItemId = new String(intent.getByteArrayExtra("data"));
 					//TODO here we should see if itemid consistent
-					boolean isConsistent = true;
+					boolean isConsistent = yourItemId.equals(msg.get(MessageField.ITEM_ID))?true:false;
 					if (isConsistent){	//itemids consistent
 						//TODO venom logic, let buyer initialize payment
 						boolean isBuyer = true;
@@ -76,10 +82,10 @@ public class BumpActivity extends Activity {
 									"Bumped successfully!",
 									Toast.LENGTH_LONG).show();
 							//hard coded
-							recipient = "gsmith104@gmail.com";
-							amount = "1.00";
-							note = "Transaction made possible through Bump!";
-							txn = "pay";
+							recipient = msg.get(MessageField.SELLER_ID);
+							amount = msg.get(MessageField.PRICE);
+							note = noteOfBump;
+							txn = pay;
 
 							try {
 								Intent venmoIntent = VenmoLibrary.openVenmoPayment(venmo_app_id, venmo_app_name, recipient, amount, note, txn);
@@ -152,7 +158,7 @@ public class BumpActivity extends Activity {
 		registerReceiver(receiver, filter);
 		logTextView = (TextView)findViewById(R.id.logTextView);
 		//logTextView.setVisibility(TextView.INVISIBLE);
-
+		
 	}
 
 	public void onStart() {

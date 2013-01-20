@@ -9,14 +9,14 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
     <TextView
-        android:id="@+id/feedTitle"
+        android:id="@+id/inboxTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="14dp"
-        android:text="All Items"
+        android:text="All Messages"
         android:textColor="#8C1D04"
         android:textSize="30sp" />
 
@@ -40,13 +40,6 @@
                 android:layout_height="wrap_content"
                 android:onClick="onBackButtonClick"
                 android:text="Back" />
-    
-    <Button
-                android:id="@+id/tryBumpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onTryBumpBottonClick"
-                android:text="TryBump" />
     </LinearLayout>
     
 

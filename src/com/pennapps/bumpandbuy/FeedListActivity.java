@@ -91,8 +91,8 @@ public class FeedListActivity extends Activity{
 		protected void onPostExecute(Object result) {
 			try {
 				if (result == null){
-				return;	
-					
+					return;
+
 				}
 				JSONArray thisArray = (JSONArray)result;
 				for(int i =0; i<thisArray.length(); i++){
@@ -119,7 +119,10 @@ public class FeedListActivity extends Activity{
 	@Override
 	public void onResume(){
 		super.onResume();
-		
+		//Server server = new Server();
+		//ListPopulateTask task = new ListPopulateTask();
+		//Object result = task.execute(null,null,null);
+
 //		try {
 //			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, null);
 //		} catch (InstantiationException e) {
@@ -180,7 +183,6 @@ public class FeedListActivity extends Activity{
 		falsity.add(tempMap);
 		}
 		return falsity;
-		
 	}
 	
         
