@@ -40,29 +40,35 @@ public class FeedListActivity extends Activity{
 	private ListView itemListView;
 	private Button selectButton;
 	private boolean sdCardStatue;
-	File currentPath;
-	File root;
-	File currentFile;
-	File[] currentFileList;
+
 	List<HashMap<String, HashSet<String>>> itemMap = new ArrayList<HashMap<String, HashSet<String>>>(); 
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feed_list);
+//		try {
+//			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, null);
+//		} catch (InstantiationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	public class ListPopulateTask extends AsyncTask {
 		// public LoginTask(){}
 		@Override
-		protected JSONObject doInBackground(Object... arg0) {
+		protected JSONArray doInBackground(Object... arg0) {
 			// TODO Auto-generated method stub
 			
 			try {
 				Server server=new Server();
-				JSONObject finalResult = null;
+				JSONArray finalResult = null;
 				Map<String, String> map = (Map<String, String>) arg0[0];
-				finalResult = server.get("/post", map);
+				finalResult = server.get2("/post", map);
 				System.err.println("here comes json array");
 				return finalResult;
 			} catch (IOException e) {
@@ -113,95 +119,103 @@ public class FeedListActivity extends Activity{
 	public void onResume(){
 		super.onResume();
 		
-		ListPopulateTask task = new ListPopulateTask();
-		task.execute(null,null,null);
+//		try {
+//			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, null);
+//		} catch (InstantiationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		itemListView = (ListView) findViewById(R.id.itemListView);
+		List<HashMap<String,String>> fakeMap = fakeMap();
+		inflateListView(fakeMap);
 		
 		
 	}
+	
+	private List<HashMap<String,String>> fakeMap(){
+		List<HashMap<String,String>> falsity = new ArrayList<HashMap<String,String>>();
+		String title1 = "Great Expectations";
+		String desc1 = "Long and boring";
+		String title2 = "How to Login To Facebook";
+		String desc2 = "Yeah that would have been useful earlier";
+		String title3 = "In Diana Jones and the Temple of Poon";
+		String desc3 = "The true 4th Movie";
+		String titleKey = "title";
+		String descKey = "description";
+		
+		String[] titleArray = {title1, title2, title3};
+		String[] descArray = {desc1, desc2, desc3};
+		
+		for(int i = 0; i<3; i++){
+		HashMap<String,String> tempMap = new HashMap<String,String>();
+		tempMap.put(titleKey, titleArray[i]);
+		tempMap.put(descKey, descArray[i]);
+		falsity.add(tempMap);
+		}
+		return falsity;
+		
+	}
+	
         
 		/*
 		* when click on files
 		 */
-//		itemListView.setOnItemClickListener(new OnItemClickListener() {
-//					
-//					public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//						if (currentFileList[position].isFile()) {
-//							currentFile = currentFileList[position];
-//							selectButton.setEnabled(true);
-//							return;
-//						} else {
-//							selectButton.setEnabled(false);
-//						}
-//						File[] tem = currentFileList[position].listFiles();
-//						if (tem == null || tem.length == 0) {// if file cannot be open
-//																// or is not a file
-//							Toast.makeText(FeedListActivity.this, "Not Available",
-//									Toast.LENGTH_SHORT).show();
-//						} else {
-//							currentPath = currentFileList[position];// re-inflate the
-//																	// list view
-//							currentFileList = tem;
-//							inflateListView(currentFileList);
-//						}
-//					}
-//				});
-//			}
+		itemListView.setOnItemClickListener(new OnItemClickListener() {
+					
+					public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+						if (currentFileList[position].isFile()) {
+							currentFile = currentFileList[position];
+							selectButton.setEnabled(true);
+							return;
+						} else {
+							selectButton.setEnabled(false);
+						}
+						File[] tem = currentFileList[position].listFiles();
+						if (tem == null || tem.length == 0) {// if file cannot be open
+																// or is not a file
+							Toast.makeText(FeedListActivity.this, "Not Available",
+									Toast.LENGTH_SHORT).show();
+						} else {
+							currentPath = currentFileList[position];// re-inflate the
+																	// list view
+							currentFileList = tem;
+							inflateListView(currentFileList);
+						}
+					}
+				});
+			}
 
 			/*
 			 * update the file list
 			 */
-			private void inflateListView(File[] files) {
+			private void inflateListView(List<HashMap<String,String>> fakeMap) {
 				List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 
-				for (int i = 0; i < files.length; i++) {
-					Map<String, Object> listItem = new HashMap<String, Object>();
-					String filename = files[i].getName();
-					listItem.put("filename", filename);
-
-					// if (".txt".equalsIgnoreCase(filename.substring(filename
-					// .lastIndexOf(".")))
-					// || ".doc".equalsIgnoreCase(filename.substring(filename
-					// .lastIndexOf(".")))) {
-					File myFile = files[i];
-
-					/*
-					 * we also need to last modified time
-					 */
-					long modTime = myFile.lastModified();
-					SimpleDateFormat dateFormat = new SimpleDateFormat(
-							"yyyy-MM-dd HH:mm:ss");
-					System.out.println(dateFormat.format(new Date(modTime)));
-
-					listItem.put("modify",
-							"Date Modified: " + dateFormat.format(new Date(modTime)));
-					listItems.add(listItem);
-					// }
-				}
+				
 
 				/*
 				 * attach the updater to the list view
 				 */
-				SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, listItems,
-						R.layout.itemlist, new String[] { "filename", "modify" },
+				SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
+						R.layout.itemlist, new String[] { "title", "description" },
 						new int[] { R.id.item_name, R.id.item_description });
 				itemListView.setAdapter(adapter);
 
-				try {
-					tvPath.setText(currentPath.getCanonicalPath());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			
 
 			}
 
 			/*
 			 * set back to root
 			 */
-			public void onRootBtnClick(View v) {
-				currentPath = root;
-				currentFileList = root.listFiles();
-				inflateListView(currentFileList);
-			}
+//			public void onRootBtnClick(View v) {
+//				currentPath = root;
+//				currentFileList = root.listFiles();
+//				inflateListView(currentFileList);
+//			}
 
 			@Override
 			public boolean onCreateOptionsMenu(Menu menu) {

@@ -83,7 +83,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name="com.pennapps.bumpandbuy.LoginUsingLoginFragmentActivity" >
-           
+        
         </activity>
 
         <meta-data
@@ -121,7 +121,7 @@
         <activity
             android:name="com.pennapps.bumpandbuy.AwesomeLoginActivity"
             android:label="@string/title_activity_awesome_login" >
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -27,19 +27,9 @@
         android:layout_alignLeft="@+id/editText1"
         android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
-        android:text="Venmo Email Address"
+        android:text="Email Address"
         android:textColor="#8C1D04"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/button2"
-        android:layout_below="@+id/textView2"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textView2"
@@ -48,7 +38,7 @@
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText1"
         android:layout_marginTop="15dp"
-        android:text="School Email"
+        android:text="Password"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#8C1D04" />
 
@@ -73,7 +63,7 @@
         android:layout_alignParentBottom="true"
          android:layout_marginLeft="45dp"
         android:layout_marginBottom="25dp"
-        android:text="Save Changes" />
+        android:text="Enter" />
 
     <Button
         android:id="@+id/cancelButton"
@@ -83,9 +73,19 @@
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/bumpbutton2"
-        android:text="Change Nothing!"
+        android:text="Get Out!"
         android:textColor="#F2E1C2" />
         
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_below="@+id/textView2"
+        android:ems="10"
+        android:inputType="textPassword" />
 
 </RelativeLayout>
