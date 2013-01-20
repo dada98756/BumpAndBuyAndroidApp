@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/babbackgroundmain" >
 
-     <LinearLayout
+    <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,12 +12,11 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
     </LinearLayout>
-    
+
     <TextView
         android:id="@+id/feedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
- 
         android:layout_marginLeft="15dp"
         android:layout_marginTop="14dp"
         android:text="All Items"
@@ -28,11 +27,10 @@
         android:id="@+id/refreshButton"
         android:layout_width="70dp"
         android:layout_height="44dp"
-              android:layout_alignParentRight="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="13dp"
-         android:layout_marginRight="10dp"
-        android:layout_alignRight = "true"
         android:background="@drawable/bumpbutton2"
         android:text="Refresh"
         android:textColor="#F2E1C2" />
@@ -96,7 +94,7 @@
             android:onClick="onInboxButtonClick"
             android:text="Inbox"
             android:textColor="#F2E1C2" />
-/>
+/>
 
         <Button
             android:id="@+id/settingsButton"
@@ -108,8 +106,6 @@
             android:text="Me"
             android:textColor="#F2E1C2" />
     </LinearLayout>
-
-   
 
     <LinearLayout
         android:layout_width="wrap_content"
