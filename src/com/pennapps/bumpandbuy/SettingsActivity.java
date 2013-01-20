@@ -17,9 +17,11 @@ import android.text.Editable;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
+	public static HashMap<String,String> userAccount;
 	private EditText user;
 	private EditText pwd;
 	private Context myContext;
@@ -69,6 +71,7 @@ public class SettingsActivity extends Activity {
 			try {
 				Server server = new Server();
 				JSONObject obj = server.post("/user", (Map)params[0]);
+				userAccount = JSONConverter.JSONObjectToMap(obj);
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -85,13 +88,16 @@ public class SettingsActivity extends Activity {
 			return params[0];
 		}
 		protected void onPostExecute(Object result){
-			Map<String, String> map = (Map<String, String>) result;
-			MyPreference.getInstance(myContext).put("user", map.get("email"));
 			Intent myIntent = new Intent(myContext,FeedListActivity.class);
 			startActivityForResult(myIntent, 0);
-			
 		}
 		
 	}
-
+	
+	
+	public void onGetOutButtonClick(View view){
+		Toast.makeText(getApplicationContext(),
+				"Bump You!",
+				Toast.LENGTH_LONG).show();
+	}
 }

@@ -13,7 +13,7 @@ public class Network {
  	        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
  	        if (networkInfo != null && networkInfo.isConnected()) {
  	        	//context.getS
- 	        	if(args.length>0)
+ 	        	if(args != null && args.length>0)
  	        		task.execute(args);
  	        	else
  	        		task.execute();

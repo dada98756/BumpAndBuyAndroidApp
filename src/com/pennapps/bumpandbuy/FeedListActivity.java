@@ -1,27 +1,19 @@
 package com.pennapps.bumpandbuy;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.pennapps.bumpandbuy.LoginUsingLoginFragmentActivity.VenmoTask;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +23,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class FeedListActivity extends Activity{
 
@@ -42,34 +33,37 @@ public class FeedListActivity extends Activity{
 	private Button selectButton;
 	private boolean sdCardStatue;
 	List<HashMap<String,String>> fakeMap;
-	List<HashMap<String, HashSet<String>>> itemMap = new ArrayList<HashMap<String, HashSet<String>>>(); 
+	List<HashMap<String, String>> itemMap; 
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feed_list);
-//		try {
-//			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, null);
-//		} catch (InstantiationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		itemListView = (ListView) findViewById(R.id.itemListView);
+		
+		itemListView.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+				Intent myIntent = new Intent(FeedListActivity.this, ItemDetailActivity.class);
+				ItemDetailActivity.details = fakeMap.get(position);
+				startActivityForResult(myIntent, InboxButtonClick_ID);
+
+			}
+		});
 	}
-	
+
 	public class ListPopulateTask extends AsyncTask {
 		// public LoginTask(){}
 		@Override
 		protected JSONArray doInBackground(Object... arg0) {
 			// TODO Auto-generated method stub
-			
+
 			try {
 				Server server=new Server();
 				JSONArray finalResult = null;
 				Map<String, String> map = (Map<String, String>) arg0[0];
-				finalResult = server.get2("/post", map);
+				finalResult = server.post2("/post", map);
 				System.err.println("here comes json array");
 				return finalResult;
 			} catch (IOException e) {
@@ -89,67 +83,34 @@ public class FeedListActivity extends Activity{
 		}
 
 		protected void onPostExecute(Object result) {
-			try {
-				if (result == null){
-					return;
-
-				}
-				JSONArray thisArray = (JSONArray)result;
-				for(int i =0; i<thisArray.length(); i++){
-					JSONObject obj = (JSONObject) thisArray.get(i);
-					JSONArray names = obj.names();
-					for(int j=0; j< names.length();j++)
-					{
-						String string = obj.getString(names.getString(j));
-						System.out.println(names.getString(i) + ": " + string);
-						
-						
-						
-						
-					}
-				}
-				
-			} catch (Exception e) {
+			if (result == null){
+				return;
 
 			}
-			//System.err.println("YES!!!");
+			try {
+				itemMap = JSONConverter.JSONArrayToListofMap((JSONArray)result);
+				inflateListView(fakeMap);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public void onResume(){
 		super.onResume();
-		//Server server = new Server();
-		//ListPopulateTask task = new ListPopulateTask();
-		//Object result = task.execute(null,null,null);
-
-//		try {
-//			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, null);
-//		} catch (InstantiationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		itemListView = (ListView) findViewById(R.id.itemListView);
-		fakeMap = fakeMap();
-		inflateListView(fakeMap);
-		itemListView.setOnItemClickListener(new OnItemClickListener() {
-			
-			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-				
-				Intent myIntent = new Intent(FeedListActivity.this, ItemDetailActivity.class);
-				ItemDetailActivity.details = fakeMap.get(position);
-				startActivityForResult(myIntent, InboxButtonClick_ID);
-				
-			}
-		});
+		try {
+			Network.executeRequest(this, new ListPopulateTask(), Server.Method.GET, new HashMap<String,String>());
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-		
-	
-	
 	private List<HashMap<String,String>> fakeMap(){
 		List<HashMap<String,String>> falsity = new ArrayList<HashMap<String,String>>();
 		String title1 = "Great Expectations";
@@ -168,117 +129,67 @@ public class FeedListActivity extends Activity{
 		String descKey = "description";
 		String priceKey = "price";
 		String sellerKey = "seller";
-		
+
 		String[] titleArray = {title1, title2, title3};
 		String[] descArray = {desc1, desc2, desc3};
 		String[] priceArray = {price1, price2, price3};
 		String[] sellArray = {seller1, seller2, seller3};
-		
+
 		for(int i = 0; i<3; i++){
-		HashMap<String,String> tempMap = new HashMap<String,String>();
-		tempMap.put(titleKey, titleArray[i]);
-		tempMap.put(descKey, descArray[i]);
-		tempMap.put(priceKey, priceArray[i]);
-		tempMap.put(sellerKey, sellArray[i]);
-		falsity.add(tempMap);
+			HashMap<String,String> tempMap = new HashMap<String,String>();
+			tempMap.put(titleKey, titleArray[i]);
+			tempMap.put(descKey, descArray[i]);
+			tempMap.put(priceKey, priceArray[i]);
+			tempMap.put(sellerKey, sellArray[i]);
+			falsity.add(tempMap);
 		}
 		return falsity;
 	}
-	
-        
+
+
+	/*
+	 * when click on files
+	 */
+
+
+	/*
+	 * update the file list
+	 */
+	private void inflateListView(List<HashMap<String,String>> fakeMap) {
+		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 		/*
-		* when click on files
+		 * attach the updater to the list view
 		 */
-		
+		SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
+				R.layout.itemlist, new String[] { "title", "description", "price" },
+				new int[] { R.id.item_name, R.id.item_description, R.id.item_price });
+		itemListView.setAdapter(adapter);
+	}
 
-			/*
-			 * update the file list
-			 */
-			private void inflateListView(List<HashMap<String,String>> fakeMap) {
-				List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		menu.add(0, 0, 0, "Quit");
+		return true;
+	}
 
-				
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		case 0:
+			finish();
+			break;
+		}
+		return true;
+	}
 
-				/*
-				 * attach the updater to the list view
-				 */
-				SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
-						R.layout.itemlist, new String[] { "title", "description", "price" },
-						new int[] { R.id.item_name, R.id.item_description, R.id.item_price });
-				itemListView.setAdapter(adapter);
-
-			
-
-			}
-
-			/*
-			 * set back to root
-			 */
-//			public void onRootBtnClick(View v) {
-//				currentPath = root;
-//				currentFileList = root.listFiles();
-//				inflateListView(currentFileList);
-//			}
-
-			@Override
-			public boolean onCreateOptionsMenu(Menu menu) {
-				super.onCreateOptionsMenu(menu);
-				menu.add(0, 0, 0, "Quit");
-				return true;
-			}
-
-			@Override
-			public boolean onOptionsItemSelected(MenuItem item) {
-				super.onOptionsItemSelected(item);
-				switch (item.getItemId()) {
-				case 0:
-					finish();
-					break;
-				}
-				return true;
-			}
-
-
-			/*
-			 * if file is vaild, getting data
-			 */
-//			public void onSelectBtnClick(View v) {
-//				if (currentFile.isDirectory()) {
-//					new AlertDialog.Builder(v.getContext())
-//							.setMessage("This is a directory!").create().show();
-//				} else if (currentFile != null) {
-//					System.out.println("Try to get data");
-//
-//					System.out.println("Getting data");
-//					Document.loadFile(currentFile);
-//					Document.setDeFile(currentFile.getPath());
-//					// Document.setDescriptor(getIntent().getData());
-//					// EngineeringPrinter.Microsoft =
-//					// MicrosoftSink.Filter(getIntent().getType());
-//					// EngineeringPrinter.type = getIntent().getType();
-//					/*
-//					 * data is good, ready to be sent to remote printer
-//					 */
-//					Intent myIntent = new Intent(v.getContext(),
-//							PrinterSelectScreen.class);
-//					myIntent.putExtra("eniac", false);
-//					myIntent.putExtra("filePath", currentFile.toString());
-//					myIntent.putExtra("isPdf",
-//							currentFile.toString().trim().endsWith(".pdf"));
-//					startActivityForResult(myIntent, 0);
-//				}
-//			}
-
-			public void onQuitBtnClick(View v) {
-				finish();
-			}
-		
 
 	public void onPostButtonClick(View view){
 		Intent myIntent = new Intent(this,PostFormActivity.class);
 		startActivityForResult(myIntent, PostButtonClick_ID);
 	}
-	
+
 	public void onInboxButtonClick(View view){
 		Intent myIntent = new Intent(this,InboxActivity.class);
 		startActivityForResult(myIntent, InboxButtonClick_ID);
@@ -289,10 +200,10 @@ public class FeedListActivity extends Activity{
 		super.onActivityResult(requestCode, resultCode, intent);
 
 		switch(requestCode){
-			case PostButtonClick_ID:
-				break;
-			case InboxButtonClick_ID:
-				break;
+		case PostButtonClick_ID:
+			break;
+		case InboxButtonClick_ID:
+			break;
 		}
 	}
 }

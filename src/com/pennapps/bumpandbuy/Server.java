@@ -88,6 +88,9 @@ public class Server {
 				get.setURI(new URI(SERVER_URL + endpoint + "?"
 						+ bodyBuilder.toString()));
 			}
+			else
+				get.setURI(new URI(SERVER_URL+endpoint));
+				
 			res = client.execute(get);
 		} else if (method == Method.POST) {
 			HttpPost post = new HttpPost();

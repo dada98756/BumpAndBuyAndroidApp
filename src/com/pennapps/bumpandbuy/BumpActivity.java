@@ -76,14 +76,16 @@ public class BumpActivity extends Activity {
 					boolean isConsistent = yourItemId.equals(msg.get(MessageField.ITEM_ID))?true:false;
 					if (isConsistent){	//itemids consistent
 						//TODO venom logic, let buyer initialize payment
-						boolean isBuyer = true;
+						String userEmail = SettingsActivity.userAccount.get(UserField.PENN_EMAIL);
+						String buyerPennEmail = msg.get(MessageField.BUYER_PENN_MAIL);
+						boolean isBuyer = buyerPennEmail.equals(userEmail);
 						if (isBuyer){//buyer
 							Toast.makeText(getApplicationContext(),
 									"Bumped successfully!",
 									Toast.LENGTH_LONG).show();
 							//hard coded
-							recipient = msg.get(MessageField.SELLER_ID);
-							amount = msg.get(MessageField.PRICE);
+							recipient = msg.get(MessageField.SELL_VENMO_MAIL);
+							amount = msg.get(MessageField.ITEM_PRICE);
 							note = noteOfBump;
 							txn = pay;
 

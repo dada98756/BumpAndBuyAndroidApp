@@ -40,8 +40,8 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_marginBottom="41dp"
         android:layout_marginLeft="15dp" >
-       
-    <Button
+        
+        <Button
         android:id="@+id/enterButton"
         android:layout_width="84dp"
         android:layout_height="44dp"
@@ -63,6 +63,7 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/bumpbutton2"
         android:text="Get Out!"
+        android:onClick="onGetOutButtonClick"
         android:textColor="#F2E1C2" />
         
     </LinearLayout>
