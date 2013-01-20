@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -40,7 +41,7 @@ public class FeedListActivity extends Activity{
 	private ListView itemListView;
 	private Button selectButton;
 	private boolean sdCardStatue;
-
+	List<HashMap<String,String>> fakeMap;
 	List<HashMap<String, HashSet<String>>> itemMap = new ArrayList<HashMap<String, HashSet<String>>>(); 
 
 	@Override
@@ -129,11 +130,22 @@ public class FeedListActivity extends Activity{
 //			e.printStackTrace();
 //		}
 		itemListView = (ListView) findViewById(R.id.itemListView);
-		List<HashMap<String,String>> fakeMap = fakeMap();
+		fakeMap = fakeMap();
 		inflateListView(fakeMap);
-		
-		
+		itemListView.setOnItemClickListener(new OnItemClickListener() {
+			
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+				
+				Intent myIntent = new Intent(FeedListActivity.this, ItemDetailActivity.class);
+				ItemDetailActivity.details = fakeMap.get(position);
+				startActivityForResult(myIntent, InboxButtonClick_ID);
+				
+			}
+		});
 	}
+
+		
+	
 	
 	private List<HashMap<String,String>> fakeMap(){
 		List<HashMap<String,String>> falsity = new ArrayList<HashMap<String,String>>();
@@ -163,30 +175,7 @@ public class FeedListActivity extends Activity{
 		/*
 		* when click on files
 		 */
-		itemListView.setOnItemClickListener(new OnItemClickListener() {
-					
-					public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-						if (currentFileList[position].isFile()) {
-							currentFile = currentFileList[position];
-							selectButton.setEnabled(true);
-							return;
-						} else {
-							selectButton.setEnabled(false);
-						}
-						File[] tem = currentFileList[position].listFiles();
-						if (tem == null || tem.length == 0) {// if file cannot be open
-																// or is not a file
-							Toast.makeText(FeedListActivity.this, "Not Available",
-									Toast.LENGTH_SHORT).show();
-						} else {
-							currentPath = currentFileList[position];// re-inflate the
-																	// list view
-							currentFileList = tem;
-							inflateListView(currentFileList);
-						}
-					}
-				});
-			}
+		
 
 			/*
 			 * update the file list

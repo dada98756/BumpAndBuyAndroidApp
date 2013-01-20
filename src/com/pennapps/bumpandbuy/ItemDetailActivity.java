@@ -1,13 +1,18 @@
 package com.pennapps.bumpandbuy;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemDetailActivity extends Activity {
-
+	public static HashMap<String, String> details;
+	TextView title, seller, price, description;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,6 +24,17 @@ public class ItemDetailActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.item_detail, menu);
 		return true;
+	}
+	
+	public void onResume(){
+		super.onResume();
+		title = (TextView)findViewById(R.id.title_textview);
+		title.setText(details.get("title"));
+		
+		description = (TextView)findViewById(R.id.description_textview);
+		description.setText(details.get("description"));
+		
+	
 	}
 
 	public  void onBuyButtonClick(View view){

@@ -20,8 +20,9 @@
             android:drawableBottom="#8C1D04"
             android:background="@drawable/translucentbacking"
             android:text="Title"
+            android:maxLines="1"
             android:textColor="#F2E1C2"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,14 +66,14 @@
             android:textColor="#F2E1C2"
             android:textSize="16sp" />
 
-        <ImageView
+       <!--  <ImageView
             android:id="@+id/imageView1"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="13dp"
             android:layout_width="290dp"
             android:layout_height="200dp"
             android:background="@drawable/translucentbacking"
-            android:src="@drawable/com_facebook_profile_default_icon" />
+            android:src="@drawable/com_facebook_profile_default_icon" />--> 
 
     </LinearLayout>
     

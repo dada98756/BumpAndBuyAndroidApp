@@ -31,17 +31,6 @@
         android:textColor="#8C1D04"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="15dp"
-        android:text="Password"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#8C1D04" />
-
 
 
     <LinearLayout
@@ -87,5 +76,16 @@
         android:layout_below="@+id/textView2"
         android:ems="10"
         android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="18dp"
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#8C1D04" />
 
 </RelativeLayout>
