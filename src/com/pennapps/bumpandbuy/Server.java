@@ -35,6 +35,16 @@ public class Server {
 	final public static String SERVER_URL = "http://158.130.110.227:8080";
 
 
+	public JSONArray post2(String endpoint, Map<String, String> params)
+			throws IOException, URISyntaxException, IllegalStateException, JSONException {
+		return printToErr2(send(endpoint, params, Method.POST));
+	}
+	
+	public JSONArray get2(String endpoint, Map<String, String> params)
+			throws IOException, URISyntaxException, IllegalStateException, JSONException {
+		return printToErr2(send(endpoint, params, Method.GET));
+	}
+	
 	public JSONObject post(String endpoint, Map<String, String> params)
 			throws IOException, URISyntaxException, IllegalStateException, JSONException {
 		return printToErr(send(endpoint, params, Method.POST));
@@ -117,6 +127,31 @@ public class Server {
 			for(int i=0;i<names.length();i++){
 				System.err.println(names.getString(i)+" : "+finalResult.get(names.getString(i)));
 			}
+			return finalResult;
+		} else {
+			System.err.println("response is null");
+			return null;
+		}
+	}
+	
+	private JSONArray printToErr2(HttpResponse res)
+			throws IllegalStateException, IOException, JSONException {
+		if (res != null) {
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(
+//					res.getEntity().getContent()));
+			System.err.println("length:" + res.getEntity().getContentLength());
+//			String newline = null;
+//			StringBuilder builder = new StringBuilder();
+//			while ((newline = reader.readLine()) != null) {
+//				System.err.println(newline);
+//				builder.append(newline).append("\n");
+//			}
+//			JSONTokener tokener = new JSONTokener(builder.toString());
+			JSONArray finalResult = new StreamToJSON(res.getEntity().getContent()).getJSONArray();
+//			JSONArray names=finalResult.names();
+//			for(int i=0;i<names.length();i++){
+//				System.err.println(names.getString(i)+" : "+finalResult.get(names.getString(i)));
+//			}
 			return finalResult;
 		} else {
 			System.err.println("response is null");
