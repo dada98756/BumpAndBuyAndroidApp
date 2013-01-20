@@ -12,7 +12,7 @@ public class Preference {
 	private static SharedPreferences sharedpref;
 	private static Preference myPref;
 	
-	public Preference getInstance(Context context){
+	public static Preference getInstance(Context context){
 		if(myPref==null){
 			myPref=new Preference(context);
 		}
@@ -44,7 +44,7 @@ public class Preference {
 		Iterator<Entry<String, String>> iterator=map.entrySet().iterator();
 		while(iterator.hasNext()){
 			Entry<String, String> entry=iterator.next();
-			editor.putString(entry.getKey(), entry.getKey());
+			editor.putString(entry.getKey(), entry.getValue());
 		}
 		return editor.commit();
 	}
