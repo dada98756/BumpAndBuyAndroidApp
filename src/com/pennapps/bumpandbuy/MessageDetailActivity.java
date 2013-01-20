@@ -19,7 +19,10 @@ public class MessageDetailActivity extends Activity {
 	private TextView titleTextView;
 	private TextView detailsTextView;
 	private TextView itemIdTextView;
-
+	private TextView sellerTextView;
+	private TextView buyerTextView;
+	private TextView itemPriceTextView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +30,9 @@ public class MessageDetailActivity extends Activity {
 		titleTextView = (TextView) findViewById(R.id.messageTitle);
 		detailsTextView =(TextView) findViewById(R.id.messageDetail);
 		itemIdTextView = (TextView) findViewById(R.id.itemIdTextView);
+		sellerTextView = (TextView)findViewById(R.id.sellerTextView);
+		buyerTextView = (TextView)findViewById(R.id.buyerTextView);
+		itemPriceTextView = (TextView)findViewById(R.id.priceIdTextView);
 	}
 
 	@Override
@@ -38,7 +44,9 @@ public class MessageDetailActivity extends Activity {
 		titleTextView.setText(msg.get(MessageField.MSG_TITLE));
 		detailsTextView.setText(msg.get(MessageField.MSG_BODY));
 		itemIdTextView.setText(msg.get(MessageField.ITEM_ID));
-		
+		sellerTextView.setText(msg.get(MessageField.SELL_PENN_MAIL));
+		buyerTextView.setText(msg.get(MessageField.BUYER_PENN_MAIL));
+		itemPriceTextView.setText(msg.get(MessageField.ITEM_PRICE));
 	}
 
 	@Override

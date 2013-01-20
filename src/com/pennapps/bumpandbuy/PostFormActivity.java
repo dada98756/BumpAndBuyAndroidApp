@@ -2,9 +2,20 @@ package com.pennapps.bumpandbuy;
 
 import io.filepicker.FilePicker;
 import io.filepicker.FilePickerAPI;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+
+import com.pennapps.bumpandbuy.ItemDetailActivity.ItemDetailTask;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -34,7 +45,7 @@ public class PostFormActivity extends Activity {
 	@Override
 	public void onResume(){
 		super.onResume();
-
+		
 	}
 
 	@Override
@@ -47,15 +58,64 @@ public class PostFormActivity extends Activity {
 	
 	public void onSellButtonClick(View view){
 		//TODO
-		Toast.makeText(getApplicationContext(),
-				"Post button clicked!",
-				Toast.LENGTH_LONG).show();
+		HashMap<String,String> newItem = new HashMap<String,String>();
+		newItem.put(ItemField.SELLOR_BUY, "sell");
+		newItem.put(ItemField.AUTHOR_EMAIL, SettingsActivity.userAccount.get(UserField.PENN_EMAIL));
+		newItem.put(ItemField.PRICE, priceEditText.getText().toString());
+		newItem.put(ItemField.POST_TITLE,titleEditText.getText().toString());
+		newItem.put(ItemField.TEXT, descriptionEditText.getText().toString());
+		newItem.put(ItemField.ATTRIBUTES, attributeEditText.getText().toString());
+	
+		try {
+			Network.executeRequest(this, new PostFormTask(), Server.Method.POST, newItem);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public class PostFormTask extends AsyncTask{
+
+		@Override
+		protected Object doInBackground(Object... params) {
+			// TODO Auto-generated method stub
+			
+			
+			try {
+				Server server =new Server();
+				JSONConverter.JSONObjectToMap(server.post("/post", (Map<String,String>) params[0]));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		protected void onPostExecute(Object result){
+			Toast.makeText(getApplicationContext(),
+					"Posted",
+					Toast.LENGTH_LONG).show();
+			finish();
+		}
+		
 	}
 	
 	public void onWantButtonClick(View view){
 		//TODO
 		Toast.makeText(getApplicationContext(),
-				"Want button clicked!",
+				"Wanted",
 				Toast.LENGTH_LONG).show();
 		
 	}

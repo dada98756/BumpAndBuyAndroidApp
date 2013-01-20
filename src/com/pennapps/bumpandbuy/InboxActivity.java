@@ -97,7 +97,7 @@ public class InboxActivity extends Activity {
 				JSONArray jsa= server.get2("/inbox", (Map)params[0]);
 				List<HashMap<String,String>> il =  JSONConverter.JSONArrayToListofMap(jsa);
 				JSONArray jsa2= server.get2("/outbox", (Map)params[0]);
-				List<HashMap<String,String>> ol =  JSONConverter.JSONArrayToListofMap(jsa);
+				List<HashMap<String,String>> ol =  JSONConverter.JSONArrayToListofMap(jsa2);
 				ol.addAll(il);
 				return ol;
 			} catch (IllegalStateException e) {

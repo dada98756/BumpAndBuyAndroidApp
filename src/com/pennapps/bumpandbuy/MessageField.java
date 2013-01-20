@@ -3,9 +3,9 @@ package com.pennapps.bumpandbuy;
 public class MessageField{
 	public static final String SELL_PENN_MAIL = "sellerPennMail";
 	public static final String SELL_VENMO_MAIL = "sellerVenmoMail";
-	public static final String BUYER_PENN_MAIL = "buyerPennMail ";
+	public static final String BUYER_PENN_MAIL = "buyerPennMail";
 	public static final String MSG_TITLE = "title";
-	public static final String ITEM_ID = "_id";
+	public static final String ITEM_ID = "postID";
 	public static final String ITEM_PRICE = "price";
 	public static final String MSG_BODY = "msgBody";
 	public static final String DATE = "date";
