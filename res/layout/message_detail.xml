@@ -4,44 +4,41 @@
     android:layout_height="match_parent"
     tools:context=".MessageDetailActivity" >
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
     <TextView
         android:id="@+id/messageTitle"
-        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="22dp"
-        android:text="Message Title" />
-
-   
+        android:text="Message Title"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/messageDetail"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sender"
-        android:layout_alignLeft="@+id/messageTitle"
-        android:layout_marginTop="15dp"
         android:text="Message Details Go Here" />
 
-     <Button
-         android:id="@+id/cancelButton"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/messageTitle"
-         android:layout_below="@+id/messageDetail"
-         android:layout_marginTop="20dp"
-         android:text="Back" />
+    <TextView
+        android:id="@+id/itemIdTextView"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:text="itemId" />
 
-     <TextView
-         android:id="@+id/sender"
-          android:layout_marginTop="9dp"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/messageTitle"
-         android:layout_below="@+id/messageTitle"
-         android:text="From Someone" />
+    <Button
+        android:id="@+id/BumpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onBumpBottonClick"
+        android:text="Bump" />
+    
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+    </LinearLayout>
 
 </RelativeLayout>

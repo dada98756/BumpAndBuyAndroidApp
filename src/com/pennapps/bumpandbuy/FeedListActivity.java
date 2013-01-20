@@ -83,6 +83,9 @@ public class FeedListActivity extends Activity{
 
 		protected void onPostExecute(Object result) {
 			try {
+				if (result == null){
+					return;
+				}
 				JSONArray thisArray = (JSONArray)result;
 				for(int i =0; i<thisArray.length(); i++){
 					JSONObject obj = (JSONObject) thisArray.get(i);
@@ -108,10 +111,9 @@ public class FeedListActivity extends Activity{
 	@Override
 	public void onResume(){
 		super.onResume();
-		Server server = new Server();
-		ListPopulateTask task = new ListPopulateTask();
-		Object result = task.doInBackground();
-		task.onPostExecute(result);
+		//Server server = new Server();
+		//ListPopulateTask task = new ListPopulateTask();
+		//Object result = task.execute(null,null,null);
 		
 	}
         
