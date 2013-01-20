@@ -34,6 +34,11 @@ public class ItemDetailActivity extends Activity {
 		description = (TextView)findViewById(R.id.description_textview);
 		description.setText(details.get("description"));
 		
+		price = (TextView)findViewById(R.id.price_textview);
+		price.setText(details.get("price"));
+		
+		seller = (TextView)findViewById(R.id.seller_textview);
+		seller.setText(details.get("seller"));
 	
 	}
 

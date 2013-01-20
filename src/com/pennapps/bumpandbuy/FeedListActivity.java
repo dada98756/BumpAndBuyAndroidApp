@@ -151,20 +151,32 @@ public class FeedListActivity extends Activity{
 		List<HashMap<String,String>> falsity = new ArrayList<HashMap<String,String>>();
 		String title1 = "Great Expectations";
 		String desc1 = "Long and boring";
+		String price1 = "$500";
+		String seller1 = "Yuhan Hao";
 		String title2 = "How to Login To Facebook";
 		String desc2 = "Yeah that would have been useful earlier";
-		String title3 = "In Diana Jones and the Temple of Poon";
-		String desc3 = "The true 4th Movie";
+		String price2 = "$10";
+		String seller2 = "Mark Zuckerberg";
+		String title3 = "Star Wars VII";
+		String desc3 = "Ewoks gone wild.  This film is a wild romp through places you thought were sacred to your childhood.";
+		String price3 = "$1000";
+		String seller3 = "Tao Mo";
 		String titleKey = "title";
 		String descKey = "description";
+		String priceKey = "price";
+		String sellerKey = "seller";
 		
 		String[] titleArray = {title1, title2, title3};
 		String[] descArray = {desc1, desc2, desc3};
+		String[] priceArray = {price1, price2, price3};
+		String[] sellArray = {seller1, seller2, seller3};
 		
 		for(int i = 0; i<3; i++){
 		HashMap<String,String> tempMap = new HashMap<String,String>();
 		tempMap.put(titleKey, titleArray[i]);
 		tempMap.put(descKey, descArray[i]);
+		tempMap.put(priceKey, priceArray[i]);
+		tempMap.put(sellerKey, sellArray[i]);
 		falsity.add(tempMap);
 		}
 		return falsity;
