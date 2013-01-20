@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/messagebackground"
     tools:context=".MessageDetailActivity" >
 
     <LinearLayout
@@ -9,36 +10,96 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
     <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
         android:id="@+id/messageTitle"
-        android:layout_width="wrap_content"
+        android:textColor="#F2E1C2"
+        android:background="@drawable/translucentbacking"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:text="Message Title"
         android:textSize="30sp" />
+    
+       <TextView
+        android:id="@+id/itemIdTextView"
+         android:layout_width="290dp"
+         android:background="@drawable/translucentbacking"
+          android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+         android:textColor="#F2E1C2"
+        android:layout_height="wrap_content"
+        android:text="itemId" />
+       
+              <TextView
+        android:id="@+id/sellerTextView"
+         android:layout_width="290dp"
+         android:background="@drawable/translucentbacking"
+          android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+         android:textColor="#F2E1C2"
+        android:layout_height="wrap_content"
+        android:text="Seller Info" />
+              
+                     <TextView
+        android:id="@+id/buyerTextView"
+         android:layout_width="290dp"
+         android:background="@drawable/translucentbacking"
+          android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+         android:textColor="#F2E1C2"
+        android:layout_height="wrap_content"
+        android:text="Buyer Info" />
+                     
+               <TextView
+        android:id="@+id/priceIdTextView"
+         android:layout_width="290dp"
+         android:background="@drawable/translucentbacking"
+          android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+         android:textColor="#F2E1C2"
+        android:layout_height="wrap_content"
+        android:text="Item Price" />
 
     <TextView
         android:id="@+id/messageDetail"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+                android:background="@drawable/translucentbacking"
+        
+          android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+         android:textColor="#F2E1C2"
+        android:layout_height="100dp"
         android:text="Message Details Go Here" />
 
-    <TextView
-        android:id="@+id/itemIdTextView"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:text="itemId" />
+ 
 
-    <Button
+  
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop = "100dp">
+        
+          <Button
+                android:layout_marginLeft="50dp"
         android:id="@+id/BumpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bumpbutton2"
+       android:textColor="#F2E1C2"
         android:onClick="onBumpBottonClick"
         android:text="Bump" />
     
     <Button
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_width="84dp"
+        android:textColor="#F2E1C2"
+                android:layout_height="44dp"
+        android:background="@drawable/bumpbutton2"
         android:text="Back" />
+    </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

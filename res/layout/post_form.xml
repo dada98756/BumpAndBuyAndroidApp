@@ -2,18 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundnoexplosion"
+    android:background="@drawable/backgroundpost"
     
     tools:context=".PostFormActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
+        android:layout_marginLeft = "10dp"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
         <TextView
+              android:layout_marginTop="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="Title" 
             android:textColor="#8C1D04"
             />
@@ -21,10 +24,12 @@
 
         <EditText
             android:id="@+id/title_edittext"
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:textSize="20sp"
+              android:layout_marginTop="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="#8C1D04"
@@ -32,10 +37,12 @@
 
         <EditText
             android:id="@+id/price_edittext"
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:textSize="20sp"
+              android:layout_marginTop="15dp"
             android:textColor="#8C1D04"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -43,30 +50,36 @@
 
         <EditText
             android:id="@+id/description_edittext"
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
         
         <TextView
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
             android:textColor="#8C1D04"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Attributes" />
 
         <EditText
+          
             android:id="@+id/attribute_edittext"
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/loadImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:onClick="onLoadImageButtonClick"
             android:text="Load Image" />
 
-        <LinearLayout
+         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            
             android:orientation="horizontal" >
 
             <Button
@@ -74,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="#F2E1C2"
                 android:layout_height="44dp"
+                android:layout_marginLeft = '10dp'
                 android:background="@drawable/bumpbutton2"
                 android:onClick="onSellButtonClick"
                 android:text="Sell it" />
@@ -82,6 +96,7 @@
                 android:id="@+id/wantButton"
                 android:layout_width="wrap_content"
                 android:textColor="#F2E1C2"
+                 android:layout_marginLeft = '25dp'
                 android:background="@drawable/bumpbutton2"
                 android:layout_height="44dp"
                 android:onClick="onWantButtonClick"
@@ -90,11 +105,14 @@
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="44dp"
+                 android:layout_marginLeft = '25dp'
                 android:textColor="#F2E1C2"
                 android:background="@drawable/bumpbutton2"
                 android:onClick="onBackButtonClick"
                 android:text="Changed My Mind!" />
         </LinearLayout>
+      
     </LinearLayout>
+     
 
 </RelativeLayout>
