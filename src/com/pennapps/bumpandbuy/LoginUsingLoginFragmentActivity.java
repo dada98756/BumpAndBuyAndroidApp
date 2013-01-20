@@ -105,7 +105,7 @@ public class LoginUsingLoginFragmentActivity extends FragmentActivity {
 										session.getAccessToken());
 								map.put("gcm_token", regID);
 
-								System.err.println("The write to Preference is "+Preference.getInstance(myContext).put(map));
+								System.err.println("The write to MyPreference is "+MyPreference.getInstance(myContext).put(map));
 								
 								// Intent intent=new Intent();
 
@@ -238,7 +238,7 @@ public class LoginUsingLoginFragmentActivity extends FragmentActivity {
 						try {
 							Network.executeRequest(myContext,
 									new VenmoTask(),
-									Server.Method.POST, Preference.getInstance(myContext).get("userID"));
+									Server.Method.POST, MyPreference.getInstance(myContext).get("userID"));
 						} catch (InstantiationException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
