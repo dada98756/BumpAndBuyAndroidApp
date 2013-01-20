@@ -150,15 +150,15 @@ public class FeedListActivity extends Activity{
 	private List<HashMap<String,String>> fakeMap(){
 		List<HashMap<String,String>> falsity = new ArrayList<HashMap<String,String>>();
 		String title1 = "Great Expectations";
-		String desc1 = "Long and boring";
+		String desc1 = "It wasn't what I hoped for";
 		String price1 = "$500";
 		String seller1 = "Yuhan Hao";
 		String title2 = "How to Login To Facebook";
 		String desc2 = "Yeah that would have been useful earlier";
 		String price2 = "$10";
 		String seller2 = "Mark Zuckerberg";
-		String title3 = "Star Wars VII";
-		String desc3 = "Ewoks gone wild.  This film is a wild romp through places you thought were sacred to your childhood.";
+		String title3 = "Star Wars VII Leaked Screenplay";
+		String desc3 = "Ewoks gone wild.  This film is a boisterous romp through places you thought were sacred to your childhood.";
 		String price3 = "$1000";
 		String seller3 = "Tao Mo";
 		String titleKey = "title";
@@ -201,8 +201,8 @@ public class FeedListActivity extends Activity{
 				 * attach the updater to the list view
 				 */
 				SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
-						R.layout.itemlist, new String[] { "title", "description" },
-						new int[] { R.id.item_name, R.id.item_description });
+						R.layout.itemlist, new String[] { "title", "description", "price" },
+						new int[] { R.id.item_name, R.id.item_description, R.id.item_price });
 				itemListView.setAdapter(adapter);
 
 			

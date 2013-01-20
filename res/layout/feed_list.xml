@@ -32,7 +32,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="13dp"
          android:layout_marginRight="10dp"
-        android:layout_alignRight = "true"
+       
         android:background="@drawable/bumpbutton2"
         android:text="Refresh"
         android:textColor="#F2E1C2" />
@@ -96,7 +96,6 @@
             android:onClick="onInboxButtonClick"
             android:text="Inbox"
             android:textColor="#F2E1C2" />
-/>
 
         <Button
             android:id="@+id/settingsButton"
