@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -22,10 +21,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-
-import android.util.Log;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class Server {
 
@@ -35,19 +34,18 @@ public class Server {
 
 	final public static String SERVER_URL = "http://158.130.110.227:8080";
 
-	final private static int POST = 0;
 
-	public static void post(String endpoint, Map<String, String> params)
-			throws IOException, URISyntaxException {
-		printToErr(send(endpoint, params, Method.POST));
+	public JSONObject post(String endpoint, Map<String, String> params)
+			throws IOException, URISyntaxException, IllegalStateException, JSONException {
+		return printToErr(send(endpoint, params, Method.POST));
 	}
 
-	public static void get(String endpoint, Map<String, String> params)
-			throws IOException, URISyntaxException {
-		printToErr(send(endpoint, params, Method.GET));
+	public JSONObject get(String endpoint, Map<String, String> params)
+			throws IOException, URISyntaxException, IllegalStateException, JSONException {
+		return printToErr(send(endpoint, params, Method.GET));
 	}
 
-	private static HttpResponse send(String endpoint,
+	private HttpResponse send(String endpoint,
 			Map<String, String> params, Method method) throws IOException,
 			URISyntaxException {
 		URL url;
@@ -75,6 +73,8 @@ public class Server {
 						bodyBuilder.append('&');
 					}
 				}
+				System.err.println(SERVER_URL + endpoint + "?"
+						+ bodyBuilder.toString());
 				get.setURI(new URI(SERVER_URL + endpoint + "?"
 						+ bodyBuilder.toString()));
 			}
@@ -99,19 +99,28 @@ public class Server {
 		return res;
 	}
 
-	private static void printToErr(HttpResponse res)
-			throws IllegalStateException, IOException {
+	private JSONObject printToErr(HttpResponse res)
+			throws IllegalStateException, IOException, JSONException {
 		if (res != null) {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					res.getEntity().getContent()));
-			Log.d("content", reader.readLine());
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(
+//					res.getEntity().getContent()));
 			System.err.println("length:" + res.getEntity().getContentLength());
-			String newline = null;
-			while ((newline = reader.readLine()) != null) {
-				System.err.println(newline);
+//			String newline = null;
+//			StringBuilder builder = new StringBuilder();
+//			while ((newline = reader.readLine()) != null) {
+//				System.err.println(newline);
+//				builder.append(newline).append("\n");
+//			}
+//			JSONTokener tokener = new JSONTokener(builder.toString());
+			JSONObject finalResult = new StreamToJSON(res.getEntity().getContent()).getJSONObject();
+			JSONArray names=finalResult.names();
+			for(int i=0;i<names.length();i++){
+				System.err.println(names.getString(i)+" : "+finalResult.get(names.getString(i)));
 			}
+			return finalResult;
 		} else {
 			System.err.println("response is null");
+			return null;
 		}
 	}
 }
