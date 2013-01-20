@@ -32,7 +32,6 @@ public class FeedListActivity extends Activity{
 	private ListView itemListView;
 	private Button selectButton;
 	private boolean sdCardStatue;
-	List<HashMap<String,String>> fakeMap;
 	List<HashMap<String, String>> itemMap; 
 
 	@Override
@@ -46,7 +45,7 @@ public class FeedListActivity extends Activity{
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
 				Intent myIntent = new Intent(FeedListActivity.this, ItemDetailActivity.class);
-				ItemDetailActivity.details = fakeMap.get(position);
+				ItemDetailActivity.details = itemMap.get(position);
 				startActivityForResult(myIntent, InboxButtonClick_ID);
 
 			}
@@ -63,7 +62,7 @@ public class FeedListActivity extends Activity{
 				Server server=new Server();
 				JSONArray finalResult = null;
 				Map<String, String> map = (Map<String, String>) arg0[0];
-				finalResult = server.post2("/post", map);
+				finalResult = server.get2("/post", map);
 				System.err.println("here comes json array");
 				return finalResult;
 			} catch (IOException e) {
@@ -89,7 +88,7 @@ public class FeedListActivity extends Activity{
 			}
 			try {
 				itemMap = JSONConverter.JSONArrayToListofMap((JSONArray)result);
-				inflateListView(fakeMap);
+				inflateListView(itemMap);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -156,12 +155,11 @@ public class FeedListActivity extends Activity{
 	 * update the file list
 	 */
 	private void inflateListView(List<HashMap<String,String>> fakeMap) {
-		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 		/*
 		 * attach the updater to the list view
 		 */
 		SimpleAdapter adapter = new SimpleAdapter(FeedListActivity.this, fakeMap,
-				R.layout.itemlist, new String[] { "title", "description", "price" },
+				R.layout.itemlist, new String[] { ItemField.POST_TITLE, ItemField.TEXT, ItemField.PRICE },
 				new int[] { R.id.item_name, R.id.item_description, R.id.item_price });
 		itemListView.setAdapter(adapter);
 	}

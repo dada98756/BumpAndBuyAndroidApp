@@ -2,13 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background = "@drawable/settingsbackground"
-    
+    android:background="@drawable/settingsbackground"
     tools:context=".SettingsActivity" >
 
     <EditText
         android:id="@+id/editText1"
-		android:layout_width="280dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -28,51 +27,41 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
         android:text="Email Address"
-        android:textColor="#8C1D04"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#8C1D04" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_alignLeft="@+id/button1"
-<<<<<<< HEAD
-        android:layout_marginBottom="41dp"
-        android:layout_marginLeft="15dp" >
-        
-        <Button
-        android:id="@+id/enterButton"
-=======
-        
-        android:layout_marginTop="440dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="440dp"
         android:baselineAligned="true" >
 
         <Button
-        android:id="@+id/saveChangesButton"
->>>>>>> 7bf646b462ebccd34419081e07bacb83eb5fb478
-        android:layout_width="84dp"
-        android:layout_height="44dp"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="45dp"
-        android:background="@drawable/bumpbutton2"
-        android:onClick="onSubmitClicked"
-        android:text="Enter"
-        android:textColor="#F2E1C2" />
+            android:id="@+id/enterButton"
+            android:layout_width="84dp"
+            android:layout_height="44dp"
+            android:layout_alignLeft="@+id/editText1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/bumpbutton2"
+            android:clickable="true"
+            android:onClick="onEnterButtonClick"
+            android:text="Enter"
+            android:textColor="#F2E1C2" />
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="84dp"
-        
-        android:layout_height="44dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/bumpbutton2"
-        android:text="Get Out!"
-        android:onClick="onGetOutButtonClick"
-        android:textColor="#F2E1C2" />
-        
+        <Button
+            android:id="@+id/getOutButton"
+            android:layout_width="84dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/bumpbutton2"
+            android:onClick="onGetOutButtonClick"
+            android:text="Get Out!"
+            android:textColor="#F2E1C2" />
     </LinearLayout>
 
     <EditText

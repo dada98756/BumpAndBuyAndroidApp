@@ -85,8 +85,13 @@ public class Server {
 				}
 				System.err.println(SERVER_URL + endpoint + "?"
 						+ bodyBuilder.toString());
-				get.setURI(new URI(SERVER_URL + endpoint + "?"
-						+ bodyBuilder.toString()));
+				if (bodyBuilder.toString().length() != 0){
+					get.setURI(new URI(SERVER_URL + endpoint + "?"
+							+ bodyBuilder.toString()));
+				}else{
+					get.setURI(new URI(SERVER_URL + endpoint));
+				}
+				
 			}
 			else
 				get.setURI(new URI(SERVER_URL+endpoint));

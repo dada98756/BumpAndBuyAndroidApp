@@ -42,7 +42,7 @@ public class SettingsActivity extends Activity {
 		return true;
 	}
 	
-	public void onSubmitClicked(View view){
+	public void onEnterButtonClick(View view){
 		
 		try {
 			String email=user.getText().toString().trim();
