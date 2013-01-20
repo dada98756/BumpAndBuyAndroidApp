@@ -29,7 +29,7 @@ public class SettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		user=(EditText) findViewById(R.id.editText1);
-		pwd= (EditText) findViewById(R.id.editText2);
+		pwd= (EditText) findViewById(R.id.passwordText);
 		myContext=this;
 	}
 
@@ -82,10 +82,9 @@ public class SettingsActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return null;
+			return params[0];
 		}
-		
-		protected void onPostExecution(Object result){
+		protected void onPostExecute(Object result){
 			Map<String, String> map = (Map<String, String>) result;
 			MyPreference.getInstance(myContext).put("user", map.get("email"));
 			Intent myIntent = new Intent(myContext,FeedListActivity.class);
